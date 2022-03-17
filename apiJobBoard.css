@@ -1,0 +1,122 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.row {
+    min-width: 383px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid grey ;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+.tags {
+    display:none;
+}
+.left-section {
+ min-width: 40%; 
+ border-left: grey 1px solid;
+ border-right: grey 1px solid;
+ padding-left: 10px;
+}
+
+.mid-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 50%;
+    margin: auto;
+}
+
+.mid-right-section {
+    font-size: 11px;
+    height: 50%;
+    margin: auto;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    align-content: center;
+    
+
+}
+
+.right-section{
+width: 25%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.img-container {
+    margin: auto 5px;
+    border-radius: 10px;
+    height: 50%;
+    
+}
+
+.logo {
+    width:85%;
+    border-radius:35px; 
+}
+
+.company, .position{
+ font-size: 14px;
+ font-family: 'Courier New', Courier, monospace ;
+}
+
+.position {
+     font-family: Verdana, Geneva, Tahoma, sans-serif;   
+    font-size: 12px;
+    font-weight:bolder;
+}
+
+.location {
+ font-family: Verdana, Geneva, Tahoma, sans-serif;   
+ color: black;
+ background-color: #dadada;
+ font-size:11px;
+ font-weight: 800;
+ border: 1px solid grey;
+ border-radius: 2px;
+ padding: 2px 3px;
+ min-width: 90px;
+ max-width: 105px;
+
+} 
+
+/*.location::before*/
+
+.apply {
+    padding: 15px 25px ;
+    border: none;
+    font-size: .8em;
+    font-weight: 900;
+    border-radius: 12px;
+    background-color: coral;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.apply:hover {
+    cursor: pointer;
+    background-color: coral;
+    box-shadow: -1px -1px 6px 0px #860909;
+}
+
+@media only screen and (min-device-width : 531px) and (max-device-width : 800px) {
+    /* Styles */
+    .tags {
+        display: block;
+        border: 1px solid grey;
+        border-radius: 5px;
+        margin: 5px;  
+        padding: 2px;
+        text-transform: uppercase;  
+        font-size: 10px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    }
