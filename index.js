@@ -31,7 +31,7 @@ const colors = ['cornflowerblue', 'coral', 'blue', 'tan', 'teal', 'tamato', 'gre
 /* my intention is to use this array and generate the background colors randomy
     depending on the background color the button will either on hover appear white with the same text-color  as the background
         or
-    it will appear standard coral with thetext-color the same as the backfground color
+    it will appear standard coral with the text-color the same as the background color
         1. write a function 2. accepts the entire .row array as an argument       
         2.loops through it,
         3.test for value of color array element to determine button color
@@ -64,9 +64,27 @@ xhttp.onreadystatechange = function() {
 
         ${row.tags}? What is going on in the mid-section? because tags is an array of tags, in the tags property, you can use an array method on it 
             as long as it is within the ${} like so ${row.tags.map(()=>)}- you can use a higher order array method inside of it
-                why the.map though? why not forEach etc.?    
-        */  
-       rowDiv.classList.add('row');  
+            why the.map though? why not forEach etc.?    
+            */  
+           rowDiv.classList.add('row'); 
+           
+           let generateRandomBackgroundColor = (array, parentEl) => {
+               let i;
+           let colorIndex = ()=> i = Math.floor(Math.random() * array.length)
+           if(parentEl.style.cssText !== 'background-color: white;'){
+                colorIndex()
+                parentEl.style.cssText = `background-color: ${array[i]}; color:${array[i]}; `;   
+           } else {
+                parentEl.style.cssText = `background-color: ${array[i]}; color:${array[i]};`;   
+     
+           }
+           }
+           
+           generateRandomBackgroundColor(colors, rowDiv);
+           console.log(rowDiv.style.backgroundColor, 'rowDiv backGround color')
+       /* background of button, and tags need to be white, text color needs to be row background
+       solution? reuse the generateRandomBackgroundColor on both of these elements text color   
+       */
            rowDiv.innerHTML = `
            <div class="img-container">
            <img class="logo" src= ${row.logo}>
@@ -78,23 +96,28 @@ xhttp.onreadystatechange = function() {
            ${row.location.split(',').slice(0,2).join('')}
            </p>
            </div>
-           <div class ="mid-section">
-           ${row.tags.map((tag)=>{ //the join below is to remove the commas, tbecause map is rendering an array directly on the page
-               return `<div class = "tags">${tag}</div>`
+           <div class ="mid-section" >
+           ${row.tags.map((tag)=>{ //the join below is to remove the commas, because map is rendering an array directly on the page
+               return `<div class = "tags" >${tag}</div>`
            }).join('')}
            </div>
-           <div class="mid-right-section">
+           <div class="mid-right-section hide-active">
            ${new Date(row.date).toLocaleString()}
            </div>
            <div class="right-section">
-           <a href = ${row.url} target = '_blank'>
-            <button class="apply">Apply</button>
+           <a href = ${row.url} target = '_blank' >
+           <button class="apply" >Apply</button>
             </a>
            </div>
            `
+           let apply = document.getElementsByClassName("apply")
+           let mid = document.getElementsByClassName('mid-section');
+           //mid.style.color = row.style.'background-color';
+           /*console.log('mid-section test =>', mid, 'and apply test=>', apply)*/
            container.appendChild(rowDiv);
         });
     }
+    // first a loop through every object, a way to generate random numbers from 0- end of array length, store in variable, assign to row
 };
 xhttp.open("GET", "https://remoteok.com/api", true);
 xhttp.send();
